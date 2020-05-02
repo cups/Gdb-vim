@@ -43,14 +43,14 @@ Vim status:
 :Over        execute the gdb "next" command (`:Next` is a Vim command)
 :Continue
 
-Close dbg
-=========
+## Close dbg
+
 CTR+d
 q(uit)
 
-Window Management
-=================
-Go to main vim window
+## Window Management
+
+Get into main vim window, then :
 
 :set number <-- set up numbering for debugging
 
@@ -58,19 +58,20 @@ CTR-W then L <-- cap L shifts vim win to vertical Right
 
 :vertical res 80 <--still in main vim window - 80 chars wide
 
-Move around windows
-===================
+## Move between the gdb and vim editor windows
+
 CTR-W w (cycle windows)
 Or,
 CTR-W p (previous window)
 
-Move from vim into GDB window
+Move from vim directly into GDB window
+
 :Gdb 
 
 :redraw! 	<-- get rid of artefacts after accidental gdb mouseover
 
-GDB Window instructions
-=======================
+## GDB Window instructions
+
 file [name of file - no .c] 
 r(un) [args]
 p(rint) 	<--  var - dump a var
@@ -84,17 +85,16 @@ c[ontinue] 	<--  Continue to next breakpoint or end
 up	 	<--  Go up one context level on stack (to caller)
 do[wn] 	 	<--  Go down one level (only possible after up) 
 
-OR use Vim editor win
-=====================
+## OR use Vim editor win
 Click on Run / Step etc with mouse
-:Next etc on cmd line
-:Break and :Clear to set break points
-:Over        execute the gdb "next" command (`:Next` is a Vim command)
 
-Inspect a var
-=============
-p var
-print var 
+:Next 		etc on cmd line
+:Break 		to set break points
+:Clear 		to delete break points
+:Over        	execute the gdb "next" command (`:Next` is a Vim command)
+
+## Inspect a var
+p(rint) var 
 
 Vim status bar :
 :Eval var
@@ -103,8 +103,7 @@ Vim status bar :
 or,
 mouseover var and pres K
 
-Workflow
-========
+## Workflow
 
 load vim with file to edit
 evoke gdb
@@ -121,18 +120,16 @@ compile with :
 
 r(un) [args]
 
-	======================
-	B GDB commands complex
-	======================
+# 2 GDB commands - more complex
 
-Logging gdb output
-==================
+## Logging gdb output
 
 set logging on [off] <-- default gdb.txt
 set logging file [filename]
 set logging overwrite [else appending]
 
 create a dir and turn on logging for that file:
+
 !mkdir dbg
 set logging file dbg/myfile.txt
 set logging on
