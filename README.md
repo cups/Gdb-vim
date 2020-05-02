@@ -1,8 +1,7 @@
 # Gdb-vim
 Simple cheat sheet for getting gdb working with vim in order to create a simple multi-screen development environment.
 
-REQUIREMENTS
-============
+## REQUIREMENTS
 
 1. Upgrade vim > 8.1 
 https://itsfoss.com/vim-8-release-install/
@@ -20,25 +19,22 @@ https://vimhelp.org/terminal.txt.html
 https://www.howtoforge.com/tutorial/how-to-debug-c-programs-in-linux-using-gdb/
 https://www.thegeekstuff.com/2010/03/debug-c-program-using-gdb/
 
-Gdb Docs:
-=========
+## Gdb Docs:
 TOC 			http://sourceware.org/gdb/current/onlinedocs/gdb/
 Download pdf 		https://www.sourceware.org/gdb/documentation/
 
 
 
-	==========================
-	 A. Basic setup and usage
-	========================== 
+# 1. Basic setup and usage
 
-Invoke Termdebug
-================
+## Invoke Termdebug
 
 :packadd termdebug
-:Termdebug [name of file - no .c]
 
-Run a file with args
-====================
+:Termdebug [name of file - without the .c]
+
+## Run a file with args
+
 GDB win : r(un) [args]
 
 Vim status:
