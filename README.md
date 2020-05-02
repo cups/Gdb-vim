@@ -23,8 +23,6 @@ https://www.thegeekstuff.com/2010/03/debug-c-program-using-gdb/
 TOC 			http://sourceware.org/gdb/current/onlinedocs/gdb/
 Download pdf 		https://www.sourceware.org/gdb/documentation/
 
-
-
 # 1. Basic setup and usage
 
 ## Invoke Termdebug
@@ -38,14 +36,19 @@ Download pdf 		https://www.sourceware.org/gdb/documentation/
 GDB win : r(un) [args]
 
 Vim status:
+
 :Run [args]
+
 :Stop,
+
 :Over        execute the gdb "next" command (`:Next` is a Vim command)
+
 :Continue
 
 ## Close dbg
 
 CTR+d
+
 q(uit)
 
 ## Window Management
@@ -61,7 +64,9 @@ CTR-W then L <-- cap L shifts vim win to vertical Right
 ## Move between the gdb and vim editor windows
 
 CTR-W w (cycle windows)
+
 Or,
+
 CTR-W p (previous window)
 
 Move from vim directly into GDB window
@@ -73,46 +78,71 @@ Move from vim directly into GDB window
 ## GDB Window instructions
 
 file [name of file - no .c] 
+
 r(un) [args]
+
 p(rint) 	<--  var - dump a var
+
 b(reak) 	<--  set break at line number
+
 d(elete)	<--  rm break
+
 r[un] 		<--  Run to next breakpoint or to end
+
 s[tep] 		<--  Single-step, descending into functions
+
 n[ext] 		<--  Single-step without descending into functions
+
 fin[ish] 	<--  Finish current function, loop, etc. (useful!)
+
 c[ontinue] 	<--  Continue to next breakpoint or end
+
 up	 	<--  Go up one context level on stack (to caller)
+
 do[wn] 	 	<--  Go down one level (only possible after up) 
 
 ## OR use Vim editor win
 Click on Run / Step etc with mouse
 
 :Next 		etc on cmd line
+
 :Break 		to set break points
+
 :Clear 		to delete break points
+
 :Over        	execute the gdb "next" command (`:Next` is a Vim command)
 
 ## Inspect a var
 p(rint) var 
 
 Vim status bar :
+
 :Eval var
+
 :Eval + highlight (mouseover) var
+
 :Eval (current line in editor)
+
 or,
+
 mouseover var and pres K
 
 ## Workflow
 
 load vim with file to edit
+
 evoke gdb
+
 sort out place of windows
+
 set number <-- turn on vim line numbering
 
 load file into gdb 'file [filename sans .c]'
+
 OR when evoking gdb
+
 compile with :
+
 !gcc -g -Wall [filename.c] -o [filename sans .c]  
 		-g dbg on 
 		-o output file 
@@ -125,33 +155,48 @@ r(un) [args]
 ## Logging gdb output
 
 set logging on [off] <-- default gdb.txt
+
 set logging file [filename]
+
 set logging overwrite [else appending]
 
 create a dir and turn on logging for that file:
 
 !mkdir dbg
+
 set logging file dbg/myfile.txt
+
 set logging on
 
 
-Repeat a command e.g.
+## Repeating commands
+
 n(ext) 3 <--jump 3 lines, including this line
+
 s(tep) 3
+
 (blank line - return) <-- repeat last command
 
-Args:
+## Default args (if repeatedly runnning the same test data)
+
 set args [args] <--set a default arg to use for all following invocations
+
 show args 
 
-Arrays:
-set print elements 10 <-- max limit the no of array elements shown
+## Array size limiting
 
-Rewind/restart:
+set print elements 10 <-- max limit the no of array element to be shown at any time
+
+## Rewind/restart:
+
 	(do some debug - get to a point to freeze)
+	
 checkpoint 		<-- returns this checkpoint-id eg 1
+
 	(go on and do some further dbg)
+	
 restart 1 		<-- restart at previous checkpoint
+
 delete checkpoint 1  	<-- optionally clean up
 
 NB A checkpoint is an identical copy of a process. Therefore if you create a checkpoint at (eg.) the start of main, and simply return to that checkpoint instead of restarting the process, you can avoid the effects of address randomization and your symbols will all stay in the same place. 
